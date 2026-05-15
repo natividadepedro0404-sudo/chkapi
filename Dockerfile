@@ -1,20 +1,12 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# Instalar extensões necessárias
-RUN docker-php-ext-install curl json
-
-# Habilitar rewrite module
-RUN a2enmod rewrite
-
-# Configurar o diretório de trabalho
-WORKDIR /var/www/html
+WORKDIR /usr/src/app
 
 # Copiar arquivos
-COPY . /var/www/html/
+COPY . .
 
-# Expor porta 8080 (Render usa essa porta)
+# Expor porta
 EXPOSE 8080
 
-# Configurar permissões
-RUN chown -R www-data:www-data /var/www/html && \
-    chmod -R 755 /var/www/html
+# Iniciar servidor PHP embutido
+CMD php -S 0.0.0.0:8080 index.php
