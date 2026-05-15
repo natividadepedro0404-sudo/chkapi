@@ -1,5 +1,5 @@
 <?php
-// kabum_link_card_final.php - Com proxy e contas aleatórias
+// index.php - Versão adaptada para Render
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
